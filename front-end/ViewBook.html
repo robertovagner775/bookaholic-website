@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="css/styleLeitor.css" type="text/css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/@treinetic/treinetic-epub-reader/dist/sample/css/style.css"/>
+    <link rel="stylesheet" href="./node_modules/@treinetic/treinetic-epub-reader/dist/sample/css/TreineticEpubReader.css"/>
+    <link rel="stylesheet" href="./node_modules/@treinetic/treinetic-epub-reader/dist/TreineticEpubReader.css"/>
+    <link rel="stylesheet" type="text/css" href="./node_modules/@treinetic/treinetic-epub-reader/dist/TreineticEpubReader.min.css">
+    <script type="text/javascript"  src="./node_modules/@treinetic/treinetic-epub-reader/dist/TreineticEpubReader.min.js"></script>
+     <script type="text/javascript"  src="./node_modules/@treinetic/treinetic-epub-reader/dist/TreineticEpubReader.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="css/styleHome.css" rel="stylesheet" type="text/css">
+    
+
+     
+ 
+</head>
+<body>
+  
+
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="adminPage.html">
+            <img src="imgs/BookAholic-removebg-preview.png" width="50" height="50">
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Escritores e Editoras</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+
+    
+      <div class="container-fluid mb-5" style="overflow: hidden">
+          <div class="row justify-content-center reader-parent">
+              <div class="col-md-8 reader-section">
+                  <div class="row">
+                      <div class="col-12">
+                          <nav class="navbar nav-design">
+                              <div class="buttonwrap theme-buttons-section">
+                                  <div class="drawer-box material-icons">dehaze</div>
+                              </div>
+                              <div>
+                                  <div class="font-size-block decrease-font-size">-</div>
+                                  <div class="font-size-block-size font-size-view"></div>
+                                  <div class="font-size-block increase-font-size">+</div>
+                              </div>
+                              <div class="buttonwrap text-right">
+                                  <div class="image-buttons horizontal-view">
+                                      <img src="node_modules/@treinetic/treinetic-epub-reader/dist/sample/assets/images/horizontal.png"/>
+                                  </div>
+                                  <div class="image-buttons vertical-view">
+                                      <img src="node_modules/@treinetic/treinetic-epub-reader/dist/sample/assets/images/vertical.png"/>
+                                  </div>
+                              </div>
+                          </nav>
+                      </div>
+                      <div class="col-12">
+                          <div class="drawer-backdrop">
+                              <div class="drawer-section"></div>
+                          </div>
+                          <div id="app-container" style="min-height: 600px ;">
+                              <div id="reading-area" role="main">
+                                  <div id="epub-reader-container">
+                                      <div id="epub-reader-frame">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-12 page-controls">
+                                  <div class="page-c-wrapper text-center pre-next-wrapper">
+                                      <div class="prev-button material-icons">navigate_before</div>
+                                      <div class="next-button material-icons">navigate_next</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+ 
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <footer class="bg-dark text-white mt-5">
+        <div id="contact-area">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="main-title">
+                   
+                  </h3>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-envelope"></i>
+                  <p><span>Envie um email para</span> contato.bookaholic@email.com</p>
+                  <p><span></span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-telephone"></i>
+                  <p><span class="">Ligue para nos</span></p>
+                  <p><span>(55) 11-99999-00000</span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-person-raised-hand"></i>
+                  <p><span class="">Está precisando de ajuda?</span></p>
+                  <span><a href="">Perguntas e Respostas</a></span><br>
+                  <span><a href="">Entre em contato suporte</a></span>
+                </div>
+                <div class="col-md-3 contact-box ">
+                  <i class="bi bi-at"></i>
+                  <p><span class="">Acesse as Redes Sociais</span></p>
+                  <div class="row">
+                      <a class="col" href="#"><i class="bi bi-facebook"></i></a>
+                      <a class="col" href="#"><i class="bi bi-instagram"></i></a>
+                      <a class="col" href="#"><i class="bi bi-twitter-x"></i></a>
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+                    <img src="imgs/BookAholic-removebg-preview.png" alt="" height="75" width="75">
+                    
+                  
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div id="copy-area"> 
+            <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p>Desenvolvido Por <a href="">@BookaholicSource</a> 2023@</p>
+                  </div>
+
+              </div>
+            </div>
+
+        </div>
+     
+
+    </footer>
+  
+
+
+<script type="text/javascript" src="node_modules/@treinetic/treinetic-epub-reader/dist/sample/js/TreineticEpubReader.js"></script>
+<script type="text/javascript" src="node_modules/@treinetic/treinetic-epub-reader/dist/sample/js/main.js"></script>
+
+<script>
+
+function getValueParam() {
+        const params = new URLSearchParams(window.location.search);
+        const path = params.get("path")
+        return path;
+}
+        /*
+
+        const epub =  ePub("./../" +getValueParam(), {});
+
+  
+        const zip = new JSZip();
+
+        const {files} = epub.zip.zip;
+
+        Object.keys(files).forEach(file => {
+            console.log(file)
+        });
+        var book = epub
+        var rendition = book.renderTo("area", {method: "default" ,width: 600, height: 400});
+        var displayed = rendition.display();
+
+       */
+
+
+var exControls = TreineticEpubReader.handler();
+exControls.registerEvent("onEpubLoadSuccess", function () {
+           
+});
+
+exControls.registerEvent("onEpubLoadFail", function () {
+
+});
+
+exControls.registerEvent("onTOCLoaded", function (hasTOC) {
+            if (!hasTOC) {
+                let toc =  exControls.getTOCJson();
+            }
+               
+               
+                exControls.hasNextPage()
+                exControls.nextPage();
+                exControls.hasPrevPage()
+                exControls.prevPage();
+                exControls.makeBookMark();
+                exControls.changeFontSize();
+                exControls.changeColumnMaxWidth();
+                exControls.setTheme("theme-id-goes-here");
+                exControls.setScrollMode("scroll-type-id-goes-here");
+                exControls.setDisplayFormat("display-format-id-goes-here");
+
+                extcontrols.getRecommendedFontSizeRange()
+                extcontrols.getRecommendedColumnWidthRange()
+                var list = extcontrols.getAvailableThemes();
+                var list = extcontrols.getAvailableScrollModes();
+                var list = extcontrols.getAvailableDisplayFormats();
+                var settings = extcontrols.getCurrentReaderSettings();
+                
+                
+            });
+
+
+            // You can feed epub file as well as extracted path of the epub 
+            // if you are planning to use epub file directly make sure that worker js files inside `ZIPJS` the `dist` is copied outside to a accessible location.
+            // and set the root folder path of those files to 'jsLibRoot'  
+          
+            const params = new URLSearchParams(window.location.search);
+            const path = params.get("path")
+
+            console.log(path)
+
+            var config = TreineticEpubReader.config();
+            config.jsLibRoot = "workers/";
+
+            TreineticEpubReader.create("#epub-reader-frame");
+
+            TreineticEpubReader.open(getValueParam());
+           /*
+            TreineticEpubReader.open("./node_modules/@treinetic/treinetic-epub-reader/dist/sample/assets/epub/epub_1.epub");
+            */
+</script>
+
+</body>
+</html>

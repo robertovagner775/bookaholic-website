@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Leitor</title>
+
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="./../css/styleHome.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+    
+    <script>
+        function cpfMask(){
+            var cpf = document.getElementById("cpf");
+            if(cpf.value.length == 3 || cpf.value.length == 7 ) {
+                cpf.value += "."
+            } else if(cpf.value.length == 11) {
+                cpf.value += "-"
+            }   
+        }
+
+        function rgMask(){
+            var rg = document.getElementById("rg");
+            if(rg.value.length == 2 || rg.value.length == 6) {
+                rg.value += "."
+            } else if(rg.value.length == 10) {
+                rg.value += "-"
+            }   
+        }
+
+    </script>
+   
+
+</head>
+<body>
+
+    <nav class="navbar  ">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./../imgs/BookAholic-removebg-preview.png" width="100" height="100">
+            </a>
+
+           
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <a class="navbar-brand d-flex justify-content-center" href="#">
+                    <img src="./../imgs/user.png" width="75" height="75">
+                </a>
+             
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">close</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Biblioteca Pessoal</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Categorias
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+         
+              </div>
+            </div>
+          </div>
+      </nav>
+
+      <main class="container">
+
+        <div class="mb-5">
+            <h1>Completar Cadastro</h1>
+            <hr>
+        </div>
+
+      <div class="card">
+
+           <div class="row">
+
+                <input type="hidden" name="id" id="id" value="">
+                <div class="form-group col-8 p-5">
+                    <label for="cpf">Nome Completo</label>
+                    <input type="text" class="form-control" id="nome_completo">
+                    <div id="valid">
+
+                    </div>
+                </div>
+                <div class="form-group col-4 p-5">
+                    <label for="data_nascimento">Data de Nascimento</label>
+                    <input class="form-control" type="date" id="data_nascimento" min="1900-03-23" >
+                    <div id="valid">
+
+                    </div>
+                </div>
+           </div>
+            <div class="row">
+                <div class="form-group col p-5">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control cpf"  placeholder="___.___.___-__" id="cpf" onkeyup="cpfMask()">
+                    <div id="valid">
+
+                    </div>
+                </div>
+                <div class="form-group col p-5">
+                    <label for="rg">RG</label>
+                    <input type="text" class="form-control rg"  placeholder="__.___.___-_" id="rg" onkeyup="rgMask()">
+                    <div id="valid">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-3 d-flex justify-content-end">
+                  <button onclick="verificarCampos()" class="btn btn-danger">Enviar Dados</button>
+                  <button class="mx-2 btn btn-info">Limpar Campos</button>
+            </div>
+    
+    </div>
+
+
+    </main>
+
+    <footer class="bg-dark text-white mt-5">
+        <div id="contact-area">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="main-title">
+                   
+                  </h3>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-envelope"></i>
+                  <p><span>Envie um email para</span> contato.bookaholic@email.com</p>
+                  <p><span></span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-telephone"></i>
+                  <p><span class="">Ligue para nos</span></p>
+                  <p><span>(55) 11-99999-00000</span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-person-raised-hand"></i>
+                  <p><span class="">Está precisando de ajuda?</span></p>
+                  <span><a href="">Perguntas e Respostas</a></span><br>
+                  <span><a href="">Entre em contato suporte</a></span>
+                </div>
+                <div class="col-md-3 contact-box ">
+                  <i class="bi bi-at"></i>
+                  <p><span class="">Acesse as Redes Sociais</span></p>
+                  <div class="row">
+                      <a class="col" href="#"><i class="bi bi-facebook"></i></a>
+                      <a class="col" href="#"><i class="bi bi-instagram"></i></a>
+                      <a class="col" href="#"><i class="bi bi-twitter-x"></i></a>
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+                    <img src="imgs/BookAholic-removebg-preview.png" alt="" height="75" width="75">
+                    
+                  
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div id="copy-area"> 
+            <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p>Desenvolvido Por <a href="">@BookaholicSource</a> 2023@</p>
+                  </div>
+
+              </div>
+            </div>
+
+        </div>
+     
+
+    </footer>
+    
+   
+
+
+    <script src="./../js/registerLeitor.js"></script>
+ 
+</body>
+</html>

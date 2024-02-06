@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleLogin.css">
+    <title>Register in plataform</title>
+
+
+ 
+</head>
+<body>
+    <div class="container-sing">
+        <form action="submit" method="POST" id="form">
+            <div class="box-img">
+                <img class="logo-img" src="imgs/BookAholic-removebg-preview.png" alt="">
+                <h3>Sign-up</h3>
+            </div>
+            <div class="input-box ">
+                <input  class="input-text" name="username" type="text" id="username" required>
+                <label for="email">Username</label>
+                <i class="fa-solid fa-circle-check img-success" style="color: #4ce740;"></i>
+                <i class="fa-solid fa-circle-exclamation img-error" style="color: #e83551;"></i>
+                <div>
+                    <span ></span>
+                </div>
+            </div>
+            <div class="input-box">
+                <input  class="input-text" name="email" type="text" id="email" required>
+                <label for="email">E-mail</label>
+                <i class="fa-solid fa-circle-check img-success" style="color: #4ce740;"></i>
+                <i class="fa-solid fa-circle-exclamation img-error" style="color: #e83551;"></i>
+                <div>
+                    <span ></span>
+                </div>
+            </div>
+            <div class="input-box">
+                <input class="input-text" name="password" id="password" type="password" required>
+                <label for="pass">Password</label>
+                <i class="fa-solid fa-circle-check img-success" style="color: #4ce740;"></i>
+                <i class="fa-solid fa-circle-exclamation img-error" style="color: #e83551;"></i>
+                <div>
+                    <span ></span>
+                </div>
+            </div>
+            <div class="input-box">
+                <input class="input-text" name="confirmPassword" id="confirmPassword" type="password" required>
+                <label for="pass">Confirm Password</label>
+                <i class="fa-solid fa-circle-check img-success" style="color: #4ce740;"></i>
+                <i class="fa-solid fa-circle-exclamation img-error" style="color: #e83551;"></i>
+                <div class="confirm">
+                    <span ></span>
+                </div>
+            </div>
+            <span class="message-error"></span>
+            <div class="box-buttons">
+                <button class="register" type="submit">REGISTER</button>
+                <button class="button-submit" onclick="location.href='loginPage.html'">LOGIN</button>
+            </div>
+
+        </form>
+    </div>
+    
+    <script src="js/login.js" ></script>
+    <script src="https://kit.fontawesome.com/6fd639a9e1.js" ></script>
+</body>
+</html>

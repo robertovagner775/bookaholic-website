@@ -1,0 +1,77 @@
+.card {
+    width: 95%;
+}
+
+.img-mod {
+   width: 15em;
+   height: 25em;
+}
+
+.img-mod img.img-fluid{
+    min-height: 100%;
+    max-width: 100%;
+}
+h4.card-title {
+    font-size: 45px;
+}
+h6.card-subtitle {
+    font-size: 25px;
+    font-style: italic;
+
+}
+p.text-book {
+    font-size: 20px;
+}
+p.star {
+    font-size: 25px;
+}
+.container {
+    padding-top: 100px;
+    margin-top: 100px;
+}
+
+p.card-text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+.card-text input {
+    display: none;
+}
+
+
+p.card-text label {
+    font-size: 20px;
+
+    
+  
+    
+}
+
+.estrelas input[type=radio]{
+	display: none;
+}.estrelas label i.fa:before{
+	content: '\f005';
+	color: #FC0;
+}.estrelas  input[type=radio]:checked  ~ label i.fa:before{
+	color: #CCC;
+}
+
+/*
+.stars label{
+    float: inline-end;
+    font-size: 40px;
+    color: #444;
+    padding: 10px;
+    transition: all 0.2s ease;
+  }
+
+.card-text input:not(:checked) ~ label:hover,
+.card-text input:not(:checked) ~ label:hover ~ label {
+    color: #fd4;
+}
+
+input:checked ~ label {
+    color: #fd4;
+}

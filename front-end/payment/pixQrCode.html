@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Leitor</title>
+
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="./../css/styleHome.css" rel="stylesheet" type="text/css">
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tc-qrcode/tc-qrcode.min.js"></script>
+   
+    
+
+</head>
+<body>
+
+    <nav class="navbar  ">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./../imgs/BookAholic-removebg-preview.png" width="100" height="100">
+            </a>
+
+           
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <a class="navbar-brand d-flex justify-content-center" href="#">
+                    <img src="./../imgs/user.png" width="75" height="75">
+                </a>
+             
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">close</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Biblioteca Pessoal</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Categorias
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+         
+              </div>
+            </div>
+          </div>
+      </nav>
+
+      <main class="container">
+
+        <div>
+          <a class="btn btn-danger" onclick="prencherCampos()" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            verificar dados cadastrados
+          </a>
+        </div>
+
+        <div class="collapse" id="collapseExample">
+        <div class="card bg-dark  text-white my-5 p-5">
+            <h4>Confirmar Cadastro</h4>
+            <hr>
+            <div>
+                <div class="row border ">
+                  <div class="col">
+                    <p>Nome Completo</p>
+                    <label  id="nomeCompleto2"> ttttttttttttttttt</label>
+                  </div>
+                  <div class="col">
+                    <p>Data Nascimento</p>
+                    <label id="dataNasc2"><p></p>tttttttttttttt</label>
+                  </div>
+                </div>
+                <div class="row  border ">
+                  <div class="col">
+                    <p>CPF</p>
+                    <label id="cpf2">tttttttttttttt</label>
+                  </div>
+                  <div class="col">
+                    <p>RG</p>
+                    <label id="rg2">tttttttttttttt</label>
+                  </div>
+                </div>
+
+                <div class="row border  p-5">
+                  <div class="col p-2 border ">
+                    <label for="">Assinatura Da Plataforma</label>
+                    <label for="">Confirme Para Gerar o QR-CODE</label>
+                    <label for="">Cobrança no formato PIX</label>
+                    <div class="border ">
+                        <label for="">Chave PIX</label>
+                        <select class="form-control text-white bg-gray" id="">
+                            <option value="EMAIL">E-mail</option>
+                            <option value="CPF">CPF</option>
+                        </select>
+                  </div>
+                  <div class="col p-2 border border-dark">
+                    <button class="btn btn-warning" onclick="efetuarPix()"> CONFIRMAR E GERAR QR-CODE </button>
+                    <hr>
+                    <button class="btn btn-danger"> CANCELAR </button>
+                </div>
+                </div>
+
+               
+              </div>
+        </div>
+        </div>
+
+        <div class="card bg-dark text-white" id="pix">
+            <div class="p-5 border border-dark">
+                  <h3>Pagamento via Pix Atraves do QR-code</h3>
+                  <p>Para efetuar o pagamento aponte a camera do celular com o APP do seu banco digital. </p>
+            </div>
+            <div class="d-flex justify-content-center my-5" id="qrCode">
+
+            </div>
+        </div>
+           
+        
+    </div>
+
+
+    </main>
+
+    <footer class="bg-dark text-white mt-5">
+        <div id="contact-area">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="main-title">
+                   
+                  </h3>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-envelope"></i>
+                  <p><span>Envie um email para</span> contato.bookaholic@email.com</p>
+                  <p><span></span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-telephone"></i>
+                  <p><span class="">Ligue para nos</span></p>
+                  <p><span>(55) 11-99999-00000</span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-person-raised-hand"></i>
+                  <p><span class="">Está precisando de ajuda?</span></p>
+                  <span><a href="">Perguntas e Respostas</a></span><br>
+                  <span><a href="">Entre em contato suporte</a></span>
+                </div>
+                <div class="col-md-3 contact-box ">
+                  <i class="bi bi-at"></i>
+                  <p><span class="">Acesse as Redes Sociais</span></p>
+                  <div class="row">
+                      <a class="col" href="#"><i class="bi bi-facebook"></i></a>
+                      <a class="col" href="#"><i class="bi bi-instagram"></i></a>
+                      <a class="col" href="#"><i class="bi bi-twitter-x"></i></a>
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+                    <img src="imgs/BookAholic-removebg-preview.png" alt="" height="75" width="75">
+                    
+                  
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div id="copy-area"> 
+            <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p>Desenvolvido Por <a href="">@BookaholicSource</a> 2023@</p>
+                  </div>
+
+              </div>
+            </div>
+
+        </div>
+     
+
+    </footer>
+
+
+    <script>
+      console.log(localStorage.getItem("nome"))
+
+        function prencherCampos() {
+            document.getElementById("cpf2").innerHTML = localStorage.getItem("cpf")
+            document.getElementById("rg2").innerHTML = localStorage.getItem("rg")
+            document.getElementById("dataNasc2").innerHTML = localStorage.getItem("data")
+            document.getElementById("nomeCompleto2").innerHTML = localStorage.getItem("nome")
+          
+        }    
+        function efetuarPix(){
+          console.log(localStorage.getItem("cpf"))
+
+            const url = "https://bookaholic-api-production.up.railway.app/payment/client"
+              fetch(url, {
+                  method: 'POST',        
+                  headers: {    
+                 
+                      'Content-Type' : 'application/json',     
+                    
+                  },
+
+                  body: JSON.stringify({
+                      rg : localStorage.getItem("rg"),
+                      cpf : localStorage.getItem("cpf"),
+                      nome_completo : localStorage.getItem("data"),
+                      dataNasc : localStorage.getItem("nome"),
+                      id_usuario : sessionStorage.getItem("user_id")
+
+                                  
+                  }),
+                  
+              }).then(response => response.json())
+              .then(data => {
+                  if(data.imagemQrCode != null) {
+                      testarQrCode(data.imagemQrCode)
+                  }
+
+              }).catch(data => {
+                console.log(data)
+              })
+
+        }
+
+        function testarQrCode(base64) {
+      
+            /*
+            var imgData = QR.drawImg("base64,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", {
+              typeNumber: 4,
+              errorCorrectLevel: 'M',
+              size: 500
+            })
+            */
+
+            TCQrcode.decodeFromBase64("data:image/png;base64,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")
+            .then(function (result) {
+                img =  TCQrcode.encodeAsImage(result)
+                
+                document.getElementById("qrCode").append(img)
+
+                
+                
+             })
+
+        }
+
+        testarQrCode()
+    </script>
+   
+    
+   <script src="./../js/registerLeitor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+ 
+</body>
+</html>

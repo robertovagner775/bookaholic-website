@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookaholic</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="css/styleHome.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" ></script>
+   
+  
+</head>
+<body >
+    
+
+   <!--   navbar barra de navegação --> 
+
+    <nav class="navbar  ">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="imgs/BookAholic-removebg-preview.png" width="100" height="100">
+            </a>
+
+            <div class="d-flex mt-3 search-box" role="search">
+                <input class="" type="search" placeholder="Search" aria-label="Search">
+                <a href="searchPage.html">
+                  <i class="bi bi-search"></i>
+                </a>
+              </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <a class="navbar-brand d-flex align-items-center flex-column" href="#">
+                        <img src="imgs/user.png"  width="75" height="75" >
+                        <div class="clearfix"></div>
+                    
+                        <small id="username" >Username Account</small>
+                    
+      
+                </a>
+                <div class="d-flex justify-content-end">
+                  <a class="nav-link" id="linkLogout" onclick="logout()"> Sair <i class="bi bi-box-arrow-right"></i></a>
+                  <a class="nav-link" href="loginPage.html" id="linkLogin">Acessar Conta</a>
+                </div>
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">close</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item" id="linkAssinatura">
+                    <a class="nav-link active" aria-current="page" href="assinaturaPage.html">Assinatura</a>
+                  </li>
+                  <li class="nav-item" id="divBiblioteca">
+                    <a class="nav-link" id="bibliotecaLink" href="bibliotecaPessoal.html" id="linkLoginLeitor">Biblioteca Pessoal</a>
+                  </li>
+                 
+                </ul>
+         
+              </div>
+            </div>
+          </div>
+      </nav>
+      <main class="container mb-5">
+
+
+
+         <h3>Categoria Listada</h3>
+         <div id="categoriaCards" class="my-5 row">
+              
+              <div id="noResult" class="d-flex justify-content-center">
+                  <h2 class="text-muted">A categoria está vazia</h2>
+              </div>
+         </div>
+
+
+
+
+
+      
+      <h3>Livros Disponiveis</h3>
+      <div id="carouselExampleControls2" class="carousel mb-5" data-bs-ride="carousel">
+      <div class="carousel-inner" id="carouselInner2">
+      
+        <div class="carousel-item active">
+          <div class="card card-mod-scroll" style="width: 18rem;">
+                <div class="img-wrapper">
+                  <img src="imgs/poder-do-habito.jpg" class="card-img-top" alt="...">
+                </div>
+                  <div class="card-body text-center">
+                    <h4 class="card-title">Poder do Habito</h4>
+                    <h6 class="card-subtitle text-muted mx-5">Charles Duhigg</h6>   
+                    <p class="card-text">
+                      <i class="bi bi-star-fill text-warning"></i>
+                      <i class="bi bi-star-fill text-warning"></i>
+                      <i class="bi bi-star-fill text-warning"></i>
+                      <i class="bi bi-star-fill text-warning"></i>
+                      <i class="bi bi-star-fill text-warning"></i>
+                      (112)
+                  </p>     
+                </div>
+              </div>
+          </div>
+          
+            
+
+          
+
+        
+
+      
+       
+      
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      </div>
+
+      <!--   Seção de cards ou carrosel do site --> 
+
+
+
+    </main>
+
+
+
+
+    <footer class="bg-dark text-white mt-5">
+        <div id="contact-area">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="main-title">
+                   
+                  </h3>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-envelope"></i>
+                  <p><span>Envie um email para</span> contato.bookaholic@email.com</p>
+                  <p><span></span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-telephone"></i>
+                  <p><span class="">Ligue para nos</span></p>
+                  <p><span>(55) 11-99999-00000</span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-person-raised-hand"></i>
+                  <p><span class="">Está precisando de ajuda?</span></p>
+                  <span><a href="">Perguntas e Respostas</a></span><br>
+                  <span><a href="">Entre em contato suporte</a></span>
+                </div>
+                <div class="col-md-3 contact-box ">
+                  <i class="bi bi-at"></i>
+                  <p><span class="">Acesse as Redes Sociais</span></p>
+                  <div class="row">
+                      <a class="col" href="#"><i class="bi bi-facebook"></i></a>
+                      <a class="col" href="#"><i class="bi bi-instagram"></i></a>
+                      <a class="col" href="#"><i class="bi bi-twitter-x"></i></a>
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+                    <img src="imgs/BookAholic-removebg-preview.png" alt="" height="75" width="75">
+                    
+                  
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div id="copy-area"> 
+            <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p>Desenvolvido Por <a href="">@BookaholicSource</a> 2023@</p>
+                  </div>
+
+              </div>
+            </div>
+
+        </div>
+     
+
+    </footer>
+   
+    <script src="js/jquery/code.jquery.com_jquery-3.7.1.min.js">
+    </script>
+    <script src="js/home.js"></script>
+
+    
+    <script src="js/listLivro.js"></script>
+    <script src="js/logged.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" ></script>
+  </body>
+</body>
+</html>

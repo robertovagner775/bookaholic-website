@@ -1,0 +1,39 @@
+{
+ 
+
+ 
+
+"dependencies": {
+ 
+
+ 
+
+ 
+
+ 
+
+"@treinetic/treinetic-epub-reader": "^1.3.2",
+ 
+
+ 
+
+ 
+
+ 
+
+"axios": "^1.5.1",
+ 
+
+ 
+
+ 
+
+ 
+
+"epubjs": "^0.3.93"
+ 
+
+ 
+
+}
+}

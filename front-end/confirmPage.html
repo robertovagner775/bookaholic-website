@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleLogin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <title>Sing-in in plataform</title>
+</head>
+<body>
+    <div class="container-sing card">
+       
+            <div class="box-img">
+                <img class=" logo-img card-img" src="imgs/BookAholic-removebg-preview.png" alt="">
+                <h3 class="card-title">Welcome</h3>
+
+                <h1 class="card-subtitle">Bem vindo </h1>
+                <p>Verifique seu endereço de email e confirme sua conta !!!</p>
+                <p id="username"></p>
+                <p id="Email"></p>
+            </div>
+            
+    </div>
+
+    <script >
+        setMessage()
+        function setMessage(){
+            document.getElementById("username").innerHTML = sessionStorage.getItem('username')
+            document.getElementById("Email").innerHTML = sessionStorage.getItem('email')
+        }
+    </script>
+</body>
+</html>

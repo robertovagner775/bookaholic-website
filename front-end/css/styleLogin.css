@@ -1,0 +1,335 @@
+:root {
+    --background-color-white: #e7e7f7;
+    --background-color-white-secundary: #f9f9f9;
+    
+    --linear-color-primary:  #E83551;
+    --linear-color-secundary:  #FF5847;
+    --linear-color-tree:  #E86135;
+    --color-border-blue: #3f7dda;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
+body {
+    
+    height: 100vh;
+    background: linear-gradient(45deg, var(--linear-color-secundary), var(--linear-color-primary), var(--linear-color-tree), #e26b5f);
+    background-size: 300% 300%;
+    animation: colors 10s ease infinite;
+    background-repeat: no-repeat;
+}
+
+@keyframes colors {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 75% 50%;
+    }
+    50% {
+        background-position: 100% 75%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.box-img{
+    text-align: center;
+
+}
+h3 {
+    font-size: 35px;
+    text-align: center;
+}
+.container-sing {
+    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-sing form {
+    background-color: var(--background-color-white-secundary);
+    border-radius: 15px;
+    padding: 32px;
+    
+   
+    
+}
+
+.input-box {
+    position: relative;
+    margin: 20px 0;
+    width: 280px;
+    background-color: var(--background-color-white-secundary);
+    
+    
+
+}
+.input-box.error span{
+    position: relative;
+    margin-bottom: 25px;
+}
+
+
+.input-box.success .input-text {
+    border: 1.5px solid 	#3CB371;
+
+}
+
+.input-box.error .input-text {
+    border: 1.5px solid #B22222;
+}
+
+.input-box.error i.img-error{
+    position: absolute;
+    left: 260px;
+    font-size: large;
+    bottom: 10px;
+    visibility: visible;
+}
+.input-box.success i.img-success{
+    position: absolute;
+    left: 260px;
+    font-size: large;
+    bottom: 10px;
+    visibility: visible;
+}
+.input-box.error span {
+    position: absolute;
+    font-size: 12px;
+    visibility: visible;
+    font-weight: bolder;
+    color: #B22222;
+}
+
+.input-box.error div {
+    position: relative;
+    margin-bottom: 40px;
+   
+}
+.input-box.error div.confirm {
+    position: relative;
+    margin-bottom: 20px;
+   
+}
+.input-box span {
+    position: absolute;
+    visibility: hidden;
+}
+.input-box i {
+    position: absolute;
+    left: 260px;
+    font-size: large;
+    bottom: 10px;
+    visibility: hidden;
+    
+}
+.input-box .span-error {
+    position: absolute;
+
+  
+    
+}
+
+div.div-error {
+    text-align: center;
+    margin: 10px;
+}
+
+div.div-error span {
+    font-size: 15px;
+}
+div a.forget {
+    margin-left:  18px;
+    margin-top: 5px;
+}
+
+div input[type=checkbox] {
+    margin-top: 5px;
+}
+
+.input-box label {
+    position: absolute;
+    left: 10px;
+    bottom: 12px;
+    transition: 0.25s;
+    
+}
+
+.input-box.success label {
+    position: absolute;
+    left: 10px;
+    bottom: 12px;
+    transition: 0.25s;
+    color: #3CB371;
+}
+
+.input-box.error label {
+    position: absolute;
+    left: 10px;
+    bottom: 12px;
+    transition: 0.25s;
+    color: #B22222;
+}
+
+div.input-box .input-text:focus ~ label,
+div.input-box .input-text:valid ~ label {
+    position: absolute;
+    left: 10px;
+    bottom: 32px;
+    padding: 4px;
+    font-size: 14px;
+    background-color: var(--background-color-white-secundary);
+    color: var(--color-border-blue);
+    
+}
+
+div.input-box.error .input-text:focus ~ label, 
+div.input-box.error .input-text:valid ~ label {
+    margin-top: 10px;
+    position: absolute;
+    left: 10px;
+    bottom: 32px;
+    padding: 4px;
+    font-size: 14px;
+    background-color: var(--background-color-white-secundary);
+    
+    color: #B22222;
+}
+
+div.input-box.error .input-text:focus,
+div.input-box.error .input-text:valid {
+    border: solid 0.5px #B22222;
+}
+
+
+div.input-box.success .input-text:focus ~ label, 
+div.input-box.success .input-text:valid ~ label {
+
+    position: absolute;
+    left: 10px;
+    bottom: 32px;
+    padding: 4px;
+    font-size: 14px;
+    background-color: var(--background-color-white-secundary);
+    
+    color: #3CB371;
+}
+
+div.input-box.success .input-text:focus,
+div.input-box.success .input-text:valid {
+    border: solid 0.5px #3CB371;
+}
+
+
+div.input-box .input-text:focus,
+div.input-box .input-text:valid {
+    border: solid 0.5px var(--color-border-blue);
+}
+.container-sing div .input-text {
+    height: 25px;
+    padding: 8px;
+    width: 100%;
+    background-color: var(--background-color-white-secundary);
+    
+    border: solid 0.5px;
+}
+
+.container-sing div .logo-img {
+    width: 248px;
+    height: 248px;
+
+
+}
+a { text-decoration: none;}
+
+.button-submit{
+    background-color: var(--linear-color-primary);
+    outline: 0;
+    padding: 16px;
+    width: 130px;
+    margin-top: 8px;
+    margin-left: 3px;
+    cursor: pointer;
+    
+
+}
+.box-buttons{
+    width: 300px;
+   
+
+    
+    
+}
+
+.register{
+    background-color: #fff;
+    color: var(--linear-color-primary);
+    border: solid 0.5px var(--linear-color-primary);
+    width: 160px;
+    outline: 0;
+    padding: 16px;
+    cursor: pointer;
+    
+    margin-top: 8px;
+    transition: 0.25s;
+}
+
+.register:hover {
+    background-color: #e7e5e5;
+}
+.button-submit:hover{
+    background-color: #d64258;
+    
+    
+    
+}
+.box-icons  {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    width: 300px;
+    box-shadow: 0.5px 1px 2px gray;
+    background-color: #fff;
+ 
+    border-radius: 8px;
+}
+
+.box-icons a {
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    padding: 25px;
+    transition: 0.5s;
+}
+
+div.box-icons  a:hover  {
+    color: #8976f8;
+ 
+}
+
+div.box-icons:hover {
+    background-color: #bfd1e2;
+}
+
+
+textarea:focus, input:focus, select:focus, button {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+input {
+    border: none;
+}

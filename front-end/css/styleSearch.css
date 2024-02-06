@@ -1,0 +1,136 @@
+body {
+    background-color: #D4D4DE;
+}
+.navbar {
+    background-color: #D4D4DE;
+}
+.search-box {
+    box-shadow: 1px 1px 2px gray;
+ 
+    color: black;
+    padding: 10px;
+    background-color: #D4D4DE;
+    
+    border-radius: 25px;
+
+}
+
+div.col-md-4 a {
+    color: inherit;
+    text-decoration: none;
+}
+.card {
+    width: 100%;
+}
+.card{
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+
+.card:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+
+.search-box input {
+    border: none;
+    background: none;
+    outline: none;
+    background-color: #D4D4DE;
+    padding: 0;
+    font-size: 16px;
+    line-height: 30px;
+    width: 400px;
+    transition: 0.5ms;
+
+
+}
+
+.img-wrapper-cont {
+    width: 15em;
+    height: 10em;
+    position: relative;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  .img-wrapper-cont img {
+    min-height: 100%;
+    max-width: 100%;
+
+  }
+  .img-wrapper-cont img:hover {
+    
+        filter: blur(2px);
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  
+  
+    
+   
+  }
+.img-wrapper-cont img:hover ~ h5 {
+    
+    
+    
+    color: gray;
+
+
+
+}
+  
+.img-wrapper-cont .card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+  
+}
+
+
+.card {
+   box-shadow: 1px 1px 4px rgb(111, 113, 114);
+   background-color: #D4D4DE;
+   
+}
+
+
+
+
+.img-mod img {
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px gray;
+    bottom: 25px;
+}
+div.cont-mod {
+    position: relative;
+}
+
+
+
+main {
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+footer {
+    padding: 25px;
+}
+#contact-area {
+    text-align: center;
+}
+
+.contact-box {
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    border-bottom: 0.5px solid rgb(247, 72, 72);
+}
+
+.contact-box i {
+    color: gray;
+    font-size: 24px;
+    height: 551px;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Pesquisa: Bookaholic</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styleSearch.css">
+</head>
+<body>
+
+    <nav class="navbar  ">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="imgs/BookAholic-removebg-preview.png" width="100" height="100">
+            </a>
+             <div class="d-flex mt-3 search-box" role="search">
+                <form id="formSearch">
+                  <input id="search" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-link" type="submit">
+                    <i class="bi bi-search"></i>
+                  </button>
+                </form>
+              </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <a class="navbar-brand d-flex align-items-center flex-column" href="#">
+                        <img src="imgs/user.png"  width="75" height="75" >
+                        <div class="clearfix"></div>
+                    
+                        <small id="username" >Username Account</small>
+                    
+      
+                </a>
+                <div class="d-flex justify-content-end">
+                  <a class="nav-link" id="linkLogout" onclick="logout()"> Sair <i class="bi bi-box-arrow-right"></i></a>
+                  <a class="nav-link" href="loginPage.html" id="linkLogin">Acessar Conta</a>
+                </div>
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">close</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item" id="linkAssinatura">
+                    <a class="nav-link active" aria-current="page" href="assinaturaPage.html">Assinatura</a>
+                  </li>
+                  <li class="nav-item" id="divBiblioteca">
+                    <a class="nav-link" id="bibliotecaLink" href="bibliotecaPessoal.html" id="linkLoginLeitor">Biblioteca Pessoal</a>
+                  </li>
+                 
+                </ul>
+         
+              </div>
+            </div>
+          </div>
+      </nav>
+
+
+      <main class="container mb-5">
+
+        <div class="mb-5">
+            <h4> Resultados da Pesquisa</h4>
+            <hr>
+
+            <div>
+                <button class="btn btn-danger" onclick="limparConteudo()">Limpar Pesquisa</button>
+            </div>
+        </div>
+
+
+        <div class="row content" id="content-search">
+           
+        </div>
+      </main>
+
+
+
+      <footer class="bg-dark text-white "
+      style="margin-top: 160px;">
+        <div id="contact-area">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="main-title">
+                   
+                  </h3>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-envelope"></i>
+                  <p><span>Envie um email para</span> contato.bookaholic@email.com</p>
+                  <p><span></span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-telephone"></i>
+                  <p><span class="">Ligue para nos</span></p>
+                  <p><span>(55) 11-99999-00000</span></p>
+                </div>
+                <div class="col-md-3 contact-box">
+                  <i class="bi bi-person-raised-hand"></i>
+                  <p><span class="">Está precisando de ajuda?</span></p>
+                  <span><a href="">Perguntas e Respostas</a></span><br>
+                  <span><a href="">Entre em contato suporte</a></span>
+                </div>
+                <div class="col-md-3 contact-box ">
+                  <i class="bi bi-at"></i>
+                  <p><span class="">Acesse as Redes Sociais</span></p>
+                  <div class="row">
+                      <a class="col" href="#"><i class="bi bi-facebook"></i></a>
+                      <a class="col" href="#"><i class="bi bi-instagram"></i></a>
+                      <a class="col" href="#"><i class="bi bi-twitter-x"></i></a>
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+                    <img src="imgs/BookAholic-removebg-preview.png" alt="" height="75" width="75">
+                    
+                  
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div id="copy-area"> 
+            <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p>Desenvolvido Por <a href="">@BookaholicSource</a> 2023@</p>
+                  </div>
+
+              </div>
+            </div>
+
+        </div>
+     
+
+    </footer>
+   
+    <script src="js/search.js"></script>
+
+    
+    <script src="js/logged.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+main.container {
+   
+    margin-bottom: 50vh;
+}
+
+.form-group {
+    margin: 15px;
+}
+
+.form-group button {
+    margin-left: 10px;
+}
