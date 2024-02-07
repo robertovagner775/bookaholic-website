@@ -2,7 +2,7 @@
 
 async function listEscritorSelect() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/gerencia/listNameEscritor")
+        fetch("http://localhost:8080/gerencia/listNameEscritor")
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -27,7 +27,7 @@ async function listEscritorSelect() {
 
 async function listTableBook() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/gerencia/listLivro")
+        fetch("http://localhost:8080/gerencia/listLivro")
         .then(response => response.json())
         .then(data => {
         
@@ -82,7 +82,7 @@ async function listTableBook() {
 
 async function listTableAutor() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/gerencia/listNameEscritor")
+        fetch("http://localhost:8080/gerencia/listNameEscritor")
         .then(response => response.json())
         .then(data => {
         
@@ -133,7 +133,7 @@ async function listTableAutor() {
 
 async function listEditoraSelect() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/gerencia/listNameEditora")
+        fetch("http://localhost:8080/gerencia/listNameEditora")
         .then(response => response.json())
         .then(data => {
             console.log(data)

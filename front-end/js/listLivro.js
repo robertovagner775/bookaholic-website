@@ -8,7 +8,7 @@ var score = 0;
 const path = "./files/imagems/"
 localStorage.setItem("path", path);
 async function getScoreSemanal() {
-    fetch("https://bookaholic-api-production.up.railway.app/livro/scoreSemanal")
+    fetch("http://localhost:8080/livro/scoreSemanal")
         .then(response => response.json())
         .then(data => {
             var i = 0;          

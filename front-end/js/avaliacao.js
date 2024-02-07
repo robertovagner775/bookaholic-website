@@ -16,7 +16,7 @@ function getValueParam() {
 }
 async function listCardBook() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/home/livro?id=" + getValueParam())
+        fetch("http://localhost:8080/home/livro?id=" + getValueParam())
         .then(response => response.json())
         .then(data => {
         
@@ -63,7 +63,7 @@ async function listCardBook() {
             p_star.classList.add("card-text", "col", 'my-5', "star")
             cardText.classList.add("card-text", "text-book")
 
-            fetch("https://bookaholic-api-production.up.railway.app/livro/viewAvaliacao?id=" + data.id)
+            fetch("http://localhost:8080/livro/viewAvaliacao?id=" + data.id)
             .then(response => response.json())
             .then(data => {
                
@@ -157,7 +157,7 @@ async function adicionarLivro(idLivro) {
 
     var idUsuario = parseInt(sessionStorage.getItem("user_id"));
 
-    const url = "https://bookaholic-api-production.up.railway.app/biblioteca/livro"     
+    const url = "http://localhost:8080/biblioteca/livro"     
            
    
         fetch(url, {
@@ -206,7 +206,7 @@ async function adicionarLivro(idLivro) {
 
 async function listEscritorBook() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/home/livro?id=" + getValueParam())
+        fetch("http://localhost:8080/home/livro?id=" + getValueParam())
         .then(response => response.json())
         .then(data => {
         
@@ -274,7 +274,7 @@ async function listEscritorBook() {
 
 async function listEditoraBook() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/home/livro?id=" + getValueParam())
+        fetch("http://localhost:8080/home/livro?id=" + getValueParam())
         .then(response => response.json())
         .then(data => {
         
@@ -343,7 +343,7 @@ async function listEditoraBook() {
 
 async function listAvaliacoesBook() {
 
-    fetch("https://bookaholic-api-production.up.railway.app/livro/avaliacaoUsuario?id=" + getValueParam())
+    fetch("http://localhost:8080/livro/avaliacaoUsuario?id=" + getValueParam())
         .then(response => response.json())
         .then(data => {
             const list = document.getElementById("comentarios");

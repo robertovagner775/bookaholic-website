@@ -2,7 +2,7 @@ localStorage.setItem("pathEpub", "./files/epub/")
 
 async function listCardBook() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/biblioteca/listLivroById?id=" + sessionStorage.getItem("user_id"), {
+        fetch("http://localhost:8080/biblioteca/listLivroById?id=" + sessionStorage.getItem("user_id"), {
             
             headers: {         
                 'Accept' : 'application/json',
@@ -89,7 +89,7 @@ async function listCardBook() {
                     p.innerText = item.sinopsem
                     console.log(item.sinopsem)
                     img.setAttribute("src",localStorage.getItem("path") + item.pathImagem)
-                    a.setAttribute("href", "https://robertomeudominio.000webhostapp.com/front-end/ViewBook.html?path=" + "./files/epub/" + item.pathEpub)
+                    a.setAttribute("href", "http://localhost:8080/front-end/ViewBook.html?path=" + "./files/epub/" + item.pathEpub)
                     if(item.status == "sem acesso") {
                         h5status.classList.remove("text-success")
                         h5status.classList.remove("text-warning")
@@ -168,7 +168,7 @@ async function listCardBook() {
 
 async function alterarStatusAndamento(id) {
 
-    const url = "https://bookaholic-api-production.up.railway.app/biblioteca/statusAndamento?id=" + id;
+    const url = "http://localhost:8080/biblioteca/statusAndamento?id=" + id;
 
         fetch(url, {
             method: 'PUT',
@@ -193,7 +193,7 @@ async function alterarStatusAndamento(id) {
 
 async function alterarStatusFinalizado(id) {
 
-    const url = "https://bookaholic-api-production.up.railway.app/biblioteca/statusFinalizado?id=" + id;
+    const url = "http://localhost:8080/biblioteca/statusFinalizado?id=" + id;
 
         fetch(url, {
             method: 'PUT',

@@ -15,7 +15,7 @@ formArquivoEpub.addEventListener("submit", (t) => {
     
     //const formData = new FormData(formEscritor)
     //const data = Object.fromEntries(formData)
-    const url = "https://bookaholic-api-production.up.railway.app/files/epub?id=" + getValueParam()
+    const url = "http://localhost:8080/files/epub?id=" + getValueParam()
 
     const fileEpub = document.getElementById('epub').files[0]
     const formData = new FormData();

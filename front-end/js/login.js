@@ -12,7 +12,7 @@ form.addEventListener("submit", (e) => {
     if(campsValidate()) {
         const formData = new FormData(form)
         const data = Object.fromEntries(formData)
-        const url = "https://bookaholic-api-production.up.railway.app/usuario"
+        const url = "http://localhost:8080/usuario"
 
         fetch(url, {
             method: 'POST',

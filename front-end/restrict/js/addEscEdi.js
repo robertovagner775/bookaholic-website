@@ -19,7 +19,7 @@ formEscritor.addEventListener("submit", (e) => {
   
     //const formData = new FormData(formEscritor)
     //const data = Object.fromEntries(formData)
-    const url = "https://bookaholic-api-production.up.railway.app/gerencia/escritor"
+    const url = "http://localhost:8080/gerencia/escritor"
         
         campsValidation()
         console.log(dataNascimento.value)
@@ -63,7 +63,7 @@ formEditora.addEventListener("submit", (f) => {
     f.preventDefault()
     //const formData = new FormData(formEscritor)
     //const data = Object.fromEntries(formData)
-    const url = "https://bookaholic-api-production.up.railway.app/gerencia/editora"
+    const url = "http://localhost:8080/gerencia/editora"
         campsValidationEditora()
         fetch(url, {
             method: 'POST',

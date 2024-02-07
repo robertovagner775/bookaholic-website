@@ -8,7 +8,7 @@ form.addEventListener("submit", (e) => {
   
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-    const url = "https://bookaholic-api-production.up.railway.app/usuario/login"
+    const url = "http://localhost:8080/usuario/login"
 
         fetch(url, {
             method: 'POST',

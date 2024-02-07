@@ -31,7 +31,7 @@ form.addEventListener("submit", (e) => {
     }
 
     
-    const url = "https://bookaholic-api-production.up.railway.app/livro/avaliacao";
+    const url = "http://localhost:8080/livro/avaliacao";
     
         fetch(url, {
             method: 'POST',

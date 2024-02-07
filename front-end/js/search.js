@@ -10,7 +10,7 @@ form.addEventListener("submit", (e) => {
   
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-    const url = "https://bookaholic-api-production.up.railway.app/home/livroTitulo?titulo="+ search.value
+    const url = "http://localhost:8080/home/livroTitulo?titulo="+ search.value
 
         fetch(url, {
             method: 'GET',

@@ -23,12 +23,12 @@ import com.bookaholic.backend.repository.EscritorRepository;
 import com.bookaholic.backend.repository.LivroRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/gerencia")
 public class GerenciaController {
 
     @Autowired
@@ -52,13 +52,13 @@ public class GerenciaController {
     }
 
  
-    @GetMapping("/listLivro")
+    @GetMapping("/livro")
     public List<Livro> listAllLivro() {
         return livroRepository.findAll();
     }
 
-    @GetMapping("/listLivroBy")
-    public List<Livro> listByidEpub(@RequestParam("id") Long id) {
+    @GetMapping("/livro/{id}")
+    public List<Livro> listByidEpub(@PathVariable("id") Long id) {
         return livroRepository.listLivroById(id);
         
     }
@@ -81,12 +81,12 @@ public class GerenciaController {
 
     }
     
-    @GetMapping("/listNameEscritor")
+    @GetMapping("/escritor")
     public List<Escritor> listNameEscritor() {
         return escritorRepository.findAll();
     }
     
-    @GetMapping("/listNameEditora")
+    @GetMapping("/editora")
     public List<Editora> listNameEditora() {
         return editoraRepository.findAll();
     }
