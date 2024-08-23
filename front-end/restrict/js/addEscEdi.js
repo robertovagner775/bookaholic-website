@@ -19,7 +19,7 @@ formEscritor.addEventListener("submit", (e) => {
   
     //const formData = new FormData(formEscritor)
     //const data = Object.fromEntries(formData)
-    const url = "http://localhost:8080/gerencia/escritor"
+    const url = "http://localhost:8080/escritores"
         
         campsValidation()
         console.log(dataNascimento.value)
@@ -63,7 +63,7 @@ formEditora.addEventListener("submit", (f) => {
     f.preventDefault()
     //const formData = new FormData(formEscritor)
     //const data = Object.fromEntries(formData)
-    const url = "http://localhost:8080/gerencia/editora"
+    const url = "http://localhost:8080/editoras"
         campsValidationEditora()
         fetch(url, {
             method: 'POST',

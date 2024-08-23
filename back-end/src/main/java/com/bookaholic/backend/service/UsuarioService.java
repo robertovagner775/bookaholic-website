@@ -8,14 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.bookaholic.backend.config.TokenService;
 import com.bookaholic.backend.dto.EmailDto;
+import com.bookaholic.backend.dto.TokenDTO;
 import com.bookaholic.backend.model.ConfirmationToken;
-
+import com.bookaholic.backend.model.ErrorResponse;
+import com.bookaholic.backend.model.LoginDto;
 import com.bookaholic.backend.model.Usuario;
 import com.bookaholic.backend.repository.ConfirmationTokenRepository;
 import com.bookaholic.backend.repository.RoleRepository;
@@ -27,6 +38,13 @@ public class UsuarioService {
 
     private UsuarioRepository repositorio;
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthenticationManager authenticateManager;
+
+    
+    @Autowired
+    private TokenService tokenService;
 
     @Autowired
     private EmailService emailService;
@@ -46,6 +64,43 @@ public class UsuarioService {
     public UsuarioService(UsuarioRepository repositorio) {
         this.repositorio = repositorio;
         this.passwordEncoder = new BCryptPasswordEncoder();
+    }
+
+
+    public ResponseEntity<?> autenticarUsuario(LoginDto login) {
+
+        try{
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(login.email(), login.senha());
+            Authentication authenticate = this.authenticateManager.authenticate(usernamePasswordAuthenticationToken);
+            var usuario = (Usuario) authenticate.getPrincipal();
+            
+
+            var token = tokenService.generateToken(usuario);
+            String position;
+            if(usuario.getAuthorities().toString().equals("[ROLE_LEITOR]")) {
+                position = "LEITOR";
+            } else if(usuario.getAuthorities().toString().equals("[ROLE_USER]")) {
+                position = "USER";
+            } else {
+                position = "ADMIN";
+            }
+            
+            TokenDTO tokenDto = new TokenDTO(usuario.getId() , usuario.getName(),token,  position);
+           
+            return ResponseEntity.status(200).body(tokenDto);
+        }catch(UsernameNotFoundException text){
+            return ResponseEntity.status(200).body(new ErrorResponse(401, "NOT-FOUND", ""+text.getMessage()));
+        }
+        catch (BadCredentialsException ex) {
+            return ResponseEntity.status(200).body(new ErrorResponse(401, "NOT-FOUND", ""+ex.getMessage()));
+        } catch (LockedException ex) {
+            return ResponseEntity.status(200).body(new ErrorResponse(401, "Erro: Conta Bloqueada", ""+ex.getMessage()));
+        } catch (DisabledException ex) {
+            return ResponseEntity.status(200).body(new ErrorResponse(401, "CONFIRM-ACCOUNT", ""+ex.getMessage()));
+        }  catch (AuthenticationException ex) {
+            return ResponseEntity.status(200).body(new ErrorResponse(401, "NOT-AUTHORIZATION", ""+ex.getMessage()));
+        }
+
     }
 
     public ResponseEntity<?> criarUsuario(Usuario usuario) {
@@ -69,8 +124,8 @@ public class UsuarioService {
         mailMessage.setTo(usuario.getEmail());
        
         mailMessage.setSubject("Complete Registration!");
-        mailMessage.setText("To confirm your account, please click here"
-                +"https://bookaholic-api-production.up.railway.app/usuario/confirm-account?token="+confirmationToken.getConfirmationToken());
+        mailMessage.setText("To confirm your account, please click here  "
+                +"http://localhost:8080/usuario/confirm-account?token="+confirmationToken.getConfirmationToken());
         emailService.sendEmail(mailMessage);
 
         System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());

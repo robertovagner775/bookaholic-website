@@ -2,7 +2,7 @@ localStorage.setItem("pathEpub", "./files/epub/")
 
 async function listCardBook() {
     try {
-        fetch("http://localhost:8080/biblioteca/listLivroById?id=" + sessionStorage.getItem("user_id"), {
+        fetch("http://localhost:8080/biblioteca/" + sessionStorage.getItem("user_id") + "/livros", {
             
             headers: {         
                 'Accept' : 'application/json',
@@ -167,8 +167,8 @@ async function listCardBook() {
 }
 
 async function alterarStatusAndamento(id) {
-
-    const url = "http://localhost:8080/biblioteca/statusAndamento?id=" + id;
+    const status = "em andamento"; 
+    const url = "http://localhost:8080/biblioteca/" + id +"/livro?status=" + status;
 
         fetch(url, {
             method: 'PUT',
@@ -192,8 +192,8 @@ async function alterarStatusAndamento(id) {
 }
 
 async function alterarStatusFinalizado(id) {
-
-    const url = "http://localhost:8080/biblioteca/statusFinalizado?id=" + id;
+    const status = "finalizado"; 
+    const url = "http://localhost:8080/biblioteca/" + id +"/livro?status=" + status;
 
         fetch(url, {
             method: 'PUT',

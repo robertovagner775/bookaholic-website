@@ -8,6 +8,7 @@ import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,30 +19,47 @@ import com.bookaholic.backend.dto.AvalDto;
 import com.bookaholic.backend.dto.SelecAvalDto;
 
 import com.bookaholic.backend.model.Avaliacao;
+import com.bookaholic.backend.model.Editora;
 import com.bookaholic.backend.model.ErrorResponse;
+import com.bookaholic.backend.model.Escritor;
 import com.bookaholic.backend.model.Livro;
 import com.bookaholic.backend.model.LivroDto;
 import com.bookaholic.backend.model.Usuario;
+import com.bookaholic.backend.model.testeDto;
 import com.bookaholic.backend.repository.AvaliacaoRepository;
+import com.bookaholic.backend.repository.EditoraRepository;
+import com.bookaholic.backend.repository.EscritorRepository;
 import com.bookaholic.backend.repository.ImagemRepository;
 import com.bookaholic.backend.repository.LivroRepository;
 import com.bookaholic.backend.repository.UsuarioRepository;
 
+import jakarta.websocket.server.PathParam;
+
 @RestController
 @RequestMapping("/livro")
-public class livroController {
+public class LivroController {
+
+    // separar a avaliação do livro colocando em uma tela separada auxilia a melhorar a API
     
-    @Autowired
-    ImagemRepository imagemRepository;
+    // colocar a lógica do negocio em um arquivo separado
 
     @Autowired
-    AvaliacaoRepository avaliacaoRepository;
+    private ImagemRepository imagemRepository;
 
     @Autowired
-    LivroRepository livroRepository;
+    private AvaliacaoRepository avaliacaoRepository;
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    private LivroRepository livroRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired 
+    private EscritorRepository escritorRepository;
+
+    @Autowired
+    private EditoraRepository editoraRepository;
 
     @PostMapping("/avaliacao")
     public ResponseEntity<?> inserirAvaliacaoLivro(@RequestBody AvalDto avaliacaodto) {
@@ -65,8 +83,8 @@ public class livroController {
     }
 
 
-    @GetMapping(value = "/viewAvaliacao")
-    public ResponseEntity<?> viewAvaliacao(@RequestParam("id") Long id) {
+    @GetMapping(value = "/avaliacao/{id}")
+    public ResponseEntity<?> viewAvaliacao(@PathParam("id") Long id) {
         SelecAvalDto aval = avaliacaoRepository.findByAvalId(id);
         if(aval == null){
             return ResponseEntity.ok().body(new ErrorResponse(200, "SEM-AVALIACAO", "esse livro não possui avaliação"));
@@ -77,9 +95,32 @@ public class livroController {
     
     }
 
-    @GetMapping("/avaliacaoUsuario")
-    public ResponseEntity<?> viewAvaliacaoUsuario(@RequestParam("id") Long id) 
+    @GetMapping("/avaliacao/{id}/usuario")
+    public ResponseEntity<?> viewAvaliacaoUsuario(@PathParam("id") Long id) 
     {
         return ResponseEntity.ok().body(avaliacaoRepository.findByLivro_id(id));
     }
+
+
+
+     @PostMapping
+    public ResponseEntity<Livro> addLivro(@RequestBody testeDto dtolivro) {
+        Escritor escritor = escritorRepository.findById(dtolivro.escritor_id()).get();
+        Editora editora = editoraRepository.findById(dtolivro.editora_id()).get();
+        Livro livro = new Livro(null, dtolivro.titulo(), dtolivro.sinopse(), dtolivro.data_lancamento(), escritor, editora, null);
+        Livro novoLivro = livroRepository.save(livro);
+        return ResponseEntity.status(201).body(novoLivro);
+    }
+
+ 
+    @GetMapping
+    public List<Livro> listAllLivro() {
+        return livroRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public List<Livro> listByidEpub(@PathVariable("id") Long id) {
+        return livroRepository.listLivroById(id);
+    }
+
 }

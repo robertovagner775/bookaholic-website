@@ -27,8 +27,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@CrossOrigin("*")
+
 @RestController
+@RequestMapping("/gerencia")
 public class GerenciaController {
 
     @Autowired
@@ -40,9 +41,9 @@ public class GerenciaController {
     @Autowired
     private LivroRepository livroRepository;
 
-     
+     /*
 
-    @PostMapping("/livro")
+    @PostMapping("/livros")
     public ResponseEntity<Livro> addLivro(@RequestBody testeDto dtolivro) {
         Escritor escritor = escritorRepository.findById(dtolivro.escritor_id()).get();
         Editora editora = editoraRepository.findById(dtolivro.editora_id()).get();
@@ -52,18 +53,19 @@ public class GerenciaController {
     }
 
  
-    @GetMapping("/livro")
+    @GetMapping("/livros")
     public List<Livro> listAllLivro() {
         return livroRepository.findAll();
     }
 
-    @GetMapping("/livro/{id}")
+    @GetMapping("/livros/{id}")
     public List<Livro> listByidEpub(@PathVariable("id") Long id) {
         return livroRepository.listLivroById(id);
+     
         
     }
 
-    @PostMapping("/escritor")
+    @PostMapping("/escritores")
     public ResponseEntity<?> addEscritor(@RequestBody Escritor escritor) {
         escritorRepository.save(escritor);
       
@@ -71,7 +73,7 @@ public class GerenciaController {
     } 
 
 
-    @PostMapping("/editora")
+    @PostMapping("/editoras")
     public ResponseEntity<?> addEditora(@RequestBody Editora editora){
       //  if(editoraRepository.existsByname(editora.getNome_editora())){
          //   return   ResponseEntity.badRequest().body(new ErrorResponse(0, "name exists in database", "not permited duplicate name"));
@@ -81,15 +83,15 @@ public class GerenciaController {
 
     }
     
-    @GetMapping("/escritor")
+    @GetMapping("/escritores")
     public List<Escritor> listNameEscritor() {
         return escritorRepository.findAll();
     }
     
-    @GetMapping("/editora")
+    @GetMapping("/editoras")
     public List<Editora> listNameEditora() {
         return editoraRepository.findAll();
     }
     
-
+ */
 }

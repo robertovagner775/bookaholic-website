@@ -54,7 +54,11 @@ public class SecurityConfig {
                   .requestMatchers(HttpMethod.GET, "/biblioteca/listLivroById").hasAuthority("ROLE_LEITOR")
                   .requestMatchers(HttpMethod.PUT, "/biblioteca/statusAndamento").hasAuthority("ROLE_LEITOR")
                   .requestMatchers(HttpMethod.PUT, "/biblioteca/statusFinalizado").hasAuthority("ROLE_LEITOR")
-                 .requestMatchers(HttpMethod.GET, "/livro/viewAvaliacao").permitAll()
+                 .requestMatchers(HttpMethod.GET, "/livros/{id}/escritores").permitAll()
+                 .requestMatchers(HttpMethod.GET, "/livros/{id}/imagens").permitAll()
+                 .requestMatchers(HttpMethod.GET, "/livros/imagens").permitAll()
+                 .requestMatchers(HttpMethod.GET, "/livros/{id}/editoras").permitAll()
+                 .requestMatchers(HttpMethod.GET, "/livros/ordem-alfabetica").permitAll()
                  .requestMatchers(HttpMethod.GET, "/livro/avaliacaoUsuario").permitAll()
                    .requestMatchers(HttpMethod.GET, "/livro/livroSemana").permitAll()
                                   .requestMatchers(HttpMethod.GET, "/livro/scoreSemanal").permitAll()
@@ -64,9 +68,15 @@ public class SecurityConfig {
                  .requestMatchers(HttpMethod.POST, "/payment/*").permitAll()
                  .requestMatchers(HttpMethod.GET, "/usuario/*").permitAll()
                  .requestMatchers(HttpMethod.GET, "/home/*").permitAll()
-                 .requestMatchers(HttpMethod.POST, "/gerencia/*").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/files/*").permitAll()
-                     .requestMatchers(HttpMethod.GET, "/gerencia/*").permitAll()
+                 .requestMatchers(HttpMethod.POST.GET , "/livro").permitAll()
+                 .requestMatchers(HttpMethod.POST , "/gerencia/*").permitAll()
+                 .requestMatchers(HttpMethod.GET , "/gerencia/*").permitAll()
+                 .requestMatchers(HttpMethod.GET, "/escritores/{id}").permitAll()
+                 .requestMatchers(HttpMethod.GET, "/escritores").permitAll()
+                 .requestMatchers(HttpMethod.PUT, "/escritores/{id}").permitAll()
+                 .requestMatchers(HttpMethod.GET , "/gerencia/livros/{id}").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/file/*").permitAll()
+                 
                 .requestMatchers(HttpMethod.POST, "/usuario")
                 .permitAll()
                 .anyRequest().authenticated()
@@ -95,7 +105,7 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource(){
     
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("https://robertomeudominio.000webhostapp.com/"));
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:5500/"));
 		configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT"));
         configuration.setAllowedHeaders(List.of("Access-Control-Allow-Origin", "*"));
          configuration.setAllowedHeaders(List.of("Access-Control-Allow-Methods", "*"));

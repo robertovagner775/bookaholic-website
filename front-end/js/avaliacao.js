@@ -16,7 +16,7 @@ function getValueParam() {
 }
 async function listCardBook() {
     try {
-        fetch("http://localhost:8080/home/livro?id=" + getValueParam())
+        fetch("http://localhost:8080/livros/" + getValueParam() +"/imagens")
         .then(response => response.json())
         .then(data => {
         
@@ -157,7 +157,7 @@ async function adicionarLivro(idLivro) {
 
     var idUsuario = parseInt(sessionStorage.getItem("user_id"));
 
-    const url = "http://localhost:8080/biblioteca/livro"     
+    const url = "http://localhost:8080/bibliotecas/livros"     
            
    
         fetch(url, {
@@ -206,7 +206,7 @@ async function adicionarLivro(idLivro) {
 
 async function listEscritorBook() {
     try {
-        fetch("http://localhost:8080/home/livro?id=" + getValueParam())
+        fetch("http://localhost:8080/livros/" + getValueParam() +"/escritores")
         .then(response => response.json())
         .then(data => {
         
@@ -231,8 +231,8 @@ async function listEscritorBook() {
 
             divRow.classList.add("row", "g-0")
             divCont.classList.add("col-12", "cont-mod", "my-5")
-            title.innerHTML = data.escritor.nome
-            cardText.innerHTML = data.escritor.sobre_autor
+            title.innerHTML = data.nome
+            cardText.innerHTML = data.sobre_autor
   
             divCard.classList.add("card", "card-mod","mb-3")
             divCardBody.classList.add("card-body", "p-5")
@@ -274,7 +274,7 @@ async function listEscritorBook() {
 
 async function listEditoraBook() {
     try {
-        fetch("http://localhost:8080/home/livro?id=" + getValueParam())
+        fetch("http://localhost:8080/livros/" + getValueParam() +"/editoras")
         .then(response => response.json())
         .then(data => {
         
@@ -300,9 +300,9 @@ async function listEditoraBook() {
 
             divRow.classList.add("row", "g-0")
             divCont.classList.add("col-12", "cont-mod", "my-5")
-            title.innerHTML = data.editora.nome_editora
-            subtitle.innerHTML = data.editora.genero
-            cardText.innerHTML = data.editora.descricao
+            title.innerHTML = data.nome_editora
+            subtitle.innerHTML = data.genero
+            cardText.innerHTML = data.descricao
 
 
             divCard.classList.add("card", "card-mod","mb-3")

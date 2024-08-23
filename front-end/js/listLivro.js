@@ -24,7 +24,7 @@ async function getScoreSemanal() {
 
 
 async function listCardBookSemanal() {
-    fetch("https://bookaholic-api-production.up.railway.app/livro/livroSemana?title="+ localStorage.getItem("topBook1") +"&title2=" + localStorage.getItem("topBook2"))
+    fetch("http://localhost:8080/livro/livroSemana?title="+ localStorage.getItem("topBook1") +"&title2=" + localStorage.getItem("topBook2"))
     .then(response => response.json())
     .then(data => {     
         const list = document.getElementById("recomendacaoLeitura")
@@ -109,7 +109,7 @@ async function listCardBookSemanal() {
             p.innerHTML = item.sinopse
             img.setAttribute("src", path + item.path_imagem)
             a.innerHTML = "leia mais"
-            a.setAttribute('href', 'https://robertomeudominio.000webhostapp.com/front-end/AvaliacaoPage.html?id='+ item.id)
+            a.setAttribute('href', 'http://localhost:5500/front-end/AvaliacaoPage.html?id='+ item.id)
            console.log(localStorage.getItem("topBookScore" + i))
             if(parseInt(localStorage.getItem("topBookScore" + i)) == 1){
                 ii.classList.add("bi","bi-star-fill", "text-warning")
@@ -170,7 +170,7 @@ async function listCardBookSemanal() {
 })
 }
 async function listCardBookCategoria(){
-    fetch("https://bookaholic-api-production.up.railway.app/home/categoria?title="+getValueParamTitle())
+    fetch("http://localhost:8080/livros/"+ getValueParamTitle() +"/categorias")
     .then(response => response.json())
     .then(data => {     
         const list = document.getElementById("categoriaCards")
@@ -328,7 +328,7 @@ async function listCardBookCategoria(){
 
 async function listCardBook() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/home/livros")
+        fetch("http://localhost:8080/livros/imagens")
         .then(response => response.json())
         .then(data => {
         
@@ -474,7 +474,9 @@ async function listCardBook() {
 
 async function listCardBookDois() {
     try {
-        fetch("https://bookaholic-api-production.up.railway.app/home/livroAlfabetica")
+        //fetch("http://localhost:8080/home/livroAlfabetica")
+
+        fetch("http://localhost:8080/livro/ordem-alfabetica")
         .then(response => response.json())
         .then(data => {
         

@@ -19,6 +19,8 @@ import com.bookaholic.backend.repository.BibliotecaRepository;
 import com.bookaholic.backend.repository.ImagemRepository;
 import com.bookaholic.backend.repository.UsuarioRepository;
 
+import jakarta.websocket.server.PathParam;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -41,7 +43,7 @@ public class BibliotecaController {
     Status status;
 
 
-    @PostMapping("livro")
+    @PostMapping("/livros")
     public ResponseEntity<?>  adicionarLivro(@RequestBody BiblioInsertDto biblioDto ) {
         Usuario usuario = usuarioRepository.findById(biblioDto.id_usuario()).get();
         Imagem img = imagemRepository.findById(biblioDto.id_imagem()).get();
@@ -53,22 +55,24 @@ public class BibliotecaController {
         return ResponseEntity.status(401).body(new ErrorResponse(401, "Error ao inserir livro" , " verifique se sua assinatura está ativa" ));
     }
 
-    @GetMapping(value = "listLivroById")
-    public List<BiblioDto> bibliotecaLeituras(@RequestParam("id") Long id) {
+    @GetMapping(value = "/{id}/livros")
+    public List<BiblioDto> bibliotecaLeituras(@PathParam("id") Long id) {
         return bibliotecaRepository.viewBiblioteca(id);
     }
 
+    /* 
     @PutMapping(value = "statusAndamento")
     public ResponseEntity<?> atualizarStatus(@RequestParam("id") Long id) {
         Biblioteca biblioteca = bibliotecaRepository.findById(id).get();
         biblioteca.setStatus("em andamento");
         return ResponseEntity.ok().body(bibliotecaRepository.save(biblioteca));
     }
+    */
 
-    @PutMapping(value = "statusFinalizado")
-    public ResponseEntity<?> atualizarStatusFinalizado(@RequestParam("id") Long id) {
+    @PutMapping(value = "/{id}/livros")
+    public ResponseEntity<?> atualizarStatusFinalizado(@PathParam("id") Long id, @RequestParam("status") String status) {
         Biblioteca biblioteca = bibliotecaRepository.findById(id).get();
-        biblioteca.setStatus("finalizado");
+        biblioteca.setStatus(status);
         return ResponseEntity.ok().body(bibliotecaRepository.save(biblioteca));
     }
 

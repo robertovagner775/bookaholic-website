@@ -31,7 +31,7 @@ import jakarta.servlet.annotation.MultipartConfig;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/files")
+@RequestMapping("/file")
 public class uploadController {
 
     @Autowired

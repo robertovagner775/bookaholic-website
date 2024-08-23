@@ -30,7 +30,7 @@ public class PaymentController {
             PayloadLocationQrCode qrcode = pixService.PixGenerateQRcode(cob.getLoc().getId());
             return ResponseEntity.ok().body(qrcode);
         } catch (EfiPayException e) {
-            // TODO Auto-generated catch block
+          
             return ResponseEntity.badRequest().body(new ErrorResponse(111, e.getError(), e.getMessage()));
         }
     }

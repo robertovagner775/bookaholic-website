@@ -43,8 +43,83 @@ public class FileService {
 
     @Autowired
     private EpubRepository epubRepository;
+
+
+ 
+    
+    public FileResponse uploadFileEpub(MultipartFile file, Long id) {
+            
+            var originalFileName = file.getOriginalFilename();
+            var fileExtencion = originalFileName.substring(originalFileName.lastIndexOf("."));
+            var ramdomFilename = UUID.randomUUID() + fileExtencion;
+    
+            var targetPath =  uploadPathEpub + "/"  + ramdomFilename;
+    
+            try{
+                if(!Files.exists(Path.of(uploadPathEpub))) {
+                    Files.createDirectories(Path.of(uploadPathEpub));
+                }
+    
+                Epub epub = new Epub(null,fileExtencion, ramdomFilename ,targetPath, file.getSize());
+                Long idEpub = epubRepository.save(epub).getIdEpub();
+                setIdEpubLivro(idEpub, id);
+          
+                Files.copy(file.getInputStream(), Path.of(targetPath));
+    
+                var fileResponse = new FileResponse();
+                fileResponse.setFilename(ramdomFilename);
+                fileResponse.setSize(file.getSize());
+                fileResponse.setStatusMessage("Sucesso !!!!!!!!!");
+    
+                return fileResponse;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    
+        private void setIdEpubLivro(Long id_epub, Long id_livro) {
+            Livro livro = livroRepository.findById(id_livro).get();
+            livro.setEpub(epubRepository.findById(id_epub).get());
+            livroRepository.save(livro);
+        }
+    
+         public FileResponse uploadFileImagem(MultipartFile file, Long id) {
+            
+            var originalFileName = file.getOriginalFilename();
+            var fileExtencion = originalFileName.substring(originalFileName.lastIndexOf("."));
+            var ramdomFilename = UUID.randomUUID() + fileExtencion;
+    
+            var targetPath = uploadPathImagem + "/"  + ramdomFilename;
+    
+            try{
+                if(!Files.exists(Path.of(uploadPathImagem))) {
+                    Files.createDirectories(Path.of(uploadPathImagem));
+                }
+    
+                //Epub epub = new Epub(null,fileExtencion, ramdomFilename ,targetPath, file.getSize(), livroRepository.findById(id).get());
+                //epubRepository.save(epub);
+    
+                Imagem imagem = new Imagem(null, ramdomFilename, fileExtencion, targetPath, livroRepository.findById(id).get());
+                imagemRepository.save(imagem);
+    
+                Files.copy(file.getInputStream(), Path.of(targetPath));
+    
+                var fileResponse = new FileResponse();
+                fileResponse.setFilename(ramdomFilename);
+                fileResponse.setSize(file.getSize());
+                fileResponse.setStatusMessage("Sucesso !!!!!!!!!");
+    
+                return fileResponse;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
     
 
+
+    
+    /*
     public FileResponse uploadFileEpub(MultipartFile file, Long id) {
 
         String FTP_ADDRESS = "files.000webhost.com";
@@ -159,3 +234,4 @@ public class FileService {
 
 }
 }
+*/

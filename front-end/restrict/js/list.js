@@ -2,7 +2,7 @@
 
 async function listEscritorSelect() {
     try {
-        fetch("http://localhost:8080/gerencia/listNameEscritor")
+        fetch("http://localhost:8080/gerencia/escritores")
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -27,7 +27,7 @@ async function listEscritorSelect() {
 
 async function listTableBook() {
     try {
-        fetch("http://localhost:8080/gerencia/listLivro")
+        fetch("http://localhost:8080/gerencia/livros")
         .then(response => response.json())
         .then(data => {
         
@@ -82,7 +82,7 @@ async function listTableBook() {
 
 async function listTableAutor() {
     try {
-        fetch("http://localhost:8080/gerencia/listNameEscritor")
+        fetch("http://localhost:8080/escritores")
         .then(response => response.json())
         .then(data => {
         
@@ -133,7 +133,7 @@ async function listTableAutor() {
 
 async function listEditoraSelect() {
     try {
-        fetch("http://localhost:8080/gerencia/listNameEditora")
+        fetch("http://localhost:8080/gerencia/editoras")
         .then(response => response.json())
         .then(data => {
             console.log(data)

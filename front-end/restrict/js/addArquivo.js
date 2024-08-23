@@ -15,7 +15,7 @@ formArquivoEpub.addEventListener("submit", (t) => {
     
     //const formData = new FormData(formEscritor)
     //const data = Object.fromEntries(formData)
-    const url = "http://localhost:8080/files/epub?id=" + getValueParam()
+    const url = "http://localhost:8080/file/epub?id=" + getValueParam()
 
     const fileEpub = document.getElementById('epub').files[0]
     const formData = new FormData();
@@ -44,7 +44,7 @@ formArquivoImagem.addEventListener("submit", (t) => {
   
   //const formData = new FormData(formEscritor)
   //const data = Object.fromEntries(formData)
-  const url = "https://bookaholic-api-production.up.railway.app/files/imagem?id=" + getValueParam()
+  const url = "http://localhost:8080/file/imagem?id=" + getValueParam()
 
   const fileImagem = document.getElementById('imagem').files[0]
   const formData2 = new FormData();
@@ -69,7 +69,7 @@ formArquivoImagem.addEventListener("submit", (t) => {
 
 async function listTableBook() {
   try {
-      fetch("https://bookaholic-api-production.up.railway.app/gerencia/listLivroBy?id="+ getValueParam())
+      fetch("http://localhost:8080/livro/"+ getValueParam())
       .then(response => response.json())
       .then(data => {
       

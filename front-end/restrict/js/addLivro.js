@@ -15,7 +15,7 @@ formLivro.addEventListener("submit", (e) => {
     e.preventDefault() 
     //const formData = new FormData(formEscritor)
     //const data = Object.fromEntries(formData)
-    const url = "http://localhost:8080/gerencia/livro"     
+    const url = "http://localhost:8080/gerencia/livros"     
         var test= campsValidation()       
    
         fetch(url, {

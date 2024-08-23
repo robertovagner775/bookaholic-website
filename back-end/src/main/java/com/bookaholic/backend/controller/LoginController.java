@@ -46,10 +46,9 @@ import lombok.Getter;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/usuario")
-public class Login  {
+public class LoginController  {
 
-    @Autowired
-    private AuthenticationManager authenticateManager;
+  
 
     @Autowired
     private TokenService tokenService;
@@ -98,39 +97,9 @@ public class Login  {
 
     @PostMapping("/login") 
     public ResponseEntity<?> login(@RequestBody  LoginDto login){
-        try{
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(login.email(), login.senha());
-            Authentication authenticate = this.authenticateManager.authenticate(usernamePasswordAuthenticationToken);
-            var usuario = (Usuario) authenticate.getPrincipal();
-            
-
-            var token = tokenService.generateToken(usuario);
-            String position;
-            if(usuario.getAuthorities().toString().equals("[ROLE_LEITOR]")) {
-                position = "LEITOR";
-            } else if(usuario.getAuthorities().toString().equals("[ROLE_USER]")) {
-                position = "USER";
-            } else {
-                position = "ADMIN";
-            }
-            
-            TokenDTO tokenDto = new TokenDTO(usuario.getId() , usuario.getName(),token,  position);
-           
-            return ResponseEntity.status(200).body(tokenDto);
-        }catch(UsernameNotFoundException text){
-            return ResponseEntity.status(200).body(new ErrorResponse(401, "NOT-FOUND", ""+text.getMessage()));
-        }
-        catch (BadCredentialsException ex) {
-            return ResponseEntity.status(200).body(new ErrorResponse(401, "NOT-FOUND", ""+ex.getMessage()));
-        } catch (LockedException ex) {
-            return ResponseEntity.status(200).body(new ErrorResponse(401, "Erro: Conta Bloqueada", ""+ex.getMessage()));
-        } catch (DisabledException ex) {
-            return ResponseEntity.status(200).body(new ErrorResponse(401, "CONFIRM-ACCOUNT", ""+ex.getMessage()));
-        }  catch (AuthenticationException ex) {
-            return ResponseEntity.status(200).body(new ErrorResponse(401, "NOT-AUTHORIZATION", ""+ex.getMessage()));
-        }
-      
+        return usuarioService.autenticarUsuario(login);
     }
+      
 
 
 
